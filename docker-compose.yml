@@ -8,14 +8,10 @@ services:
     frontend:
         build: ./frontend
         container_name: docker-frontend
-        command: npm run start
+        command: serve -s build -l 3000
         ports:
             - 3000:3000
         restart: unless-stopped
-        stdin_open: true
-        tty: true
-        volumes:
-            - ./frontend/src:/usr/src/app/src
     api:
         build: ./api
         container_name: docker-api
