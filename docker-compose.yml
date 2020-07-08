@@ -47,6 +47,18 @@ services:
         networks:
             - realworld-docker-network
 
+    mail:
+        build: ./mail
+        container_name: docker-mail
+        command: npm run start
+        restart: unless-stopped
+        environment:
+            - PORT=3003
+            - AUTH_API_URL=http://auth:3002/api
+            - API_URL=http://api:3001/api
+        networks:
+            - realworld-docker-network
+
     api_db:
         image: mongo:latest
         container_name: docker-api-db
@@ -74,5 +86,6 @@ services:
             - frontend
             - api
             - auth
+            - mail
         networks:
             - realworld-docker-network

@@ -21,6 +21,11 @@ services:
         volumes:
             - ./auth/src:/usr/src/app/src
 
+    mail:
+        command: npm run dev
+        volumes:
+            - ./mail/src:/usr/src/app/src
+
     nginx:
         volumes:
             - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf
